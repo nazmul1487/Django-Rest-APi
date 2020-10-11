@@ -28,4 +28,3 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
         return user
 
- 
