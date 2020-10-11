@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status, filters
 from rest_framework import viewsets
 # Create your views here.
 from .models import UserProfile
@@ -89,3 +89,7 @@ class HelloViewSet(viewsets.ViewSet):
 class UserProfileViewSet(viewsets.ModelViewSet):
     serializer_class = UserProfileSerializer
     queryset = UserProfile.objects.all()
+    #permission_classes = (IsAuthenticated, )
+    filter_backends = (filters.SearchFilter, )
+    search_fields = ('name', 'email',)
+
